@@ -1,0 +1,147 @@
+/* ===========
+   Stile Globale
+   =========== */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: url('image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); /* overlay scuro */
+  z-index: -1;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 50px 20px 20px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+/* ===========
+   Cards Home
+   =========== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.card span {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+/* ===========
+   Pagine interne
+   =========== */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 25px;
+}
+
+.config {
+  width: 90%;
+  max-width: 800px;
+  background: #e0e0e0; /* rettangolo grigio chiaro */
+  color: #222;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.config h2 {
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.config pre {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #222;
+  text-align: left;
+}
+
+header nav a {
+  margin: 0 10px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 320px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}

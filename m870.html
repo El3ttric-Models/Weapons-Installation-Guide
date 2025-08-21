@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M870 Shotgun - El3ttric Models</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* Header */
+    header h1, header p {
+      text-align: center;
+    }
+
+    /* Menu di navigazione: pulsanti neri su sfondo trasparente */
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 25px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff; /* testo bianco */
+      background-color: #ffffff; /* pulsanti neri */
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+    }
+
+    nav a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      background-color: #333; /* hover leggermente più chiaro */
+    }
+
+    /* Sezione contenuto */
+    section.config {
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    section.config h2 {
+      color: #333;
+    }
+
+    pre {
+      background-color: #222;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    /* Pulsante copia */
+    .copy-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      background-color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .copy-btn:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>M870 Shotgun</h1>
+  <p>Installation guide for QBcore, ox_inventory e vMenu</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="m870-beanbag.html">M870 BeanBag</a>
+    <a href="40mm.html">40MM Launcher</a>
+  </nav>
+</header>
+
+<main>
+  <section class="config">
+    <h2>QBcore</h2>
+    <pre id="qbcore-code">
+['WEAPON_M870_SHOTGUN'] = { 
+    label = 'M870 Shotgun',
+    weight = 3300,
+    durability = 0.03,
+    ammoname = 'AMMO_SHOTGUN',
+}
+['AMMO_SHOTGUN'] = { 
+    label = 'Shotgun Cartridge',
+    weight = 9,
+}
+    </pre>
+    <button class="copy-btn" onclick="copyCode('qbcore-code')">Copy</button>
+  </section>
+
+  <section class="config">
+    <h2>ox_inventory</h2>
+    <pre id="ox-code">
+['WEAPON_M870_SHOTGUN'] = { 
+    label = 'M870 Shotgun',
+    weight = 3300,
+    stack = false,
+    description = 'Shotgun normale',
+}
+['AMMO_SHOTGUN'] = { 
+    label = 'Shotgun Cartridge',
+    weight = 9,
+    stack = true,
+}
+    </pre>
+    <button class="copy-btn" onclick="copyCode('ox-code')">Copy</button>
+  </section>
+
+  <section class="config">
+    <h2>vMenu</h2>
+    <pre id="vmenu-code">
+RegisterCommand("givem870", function(source, args)
+    local playerPed = PlayerPedId()
+    GiveWeaponToPed(playerPed, `WEAPON_M870_SHOTGUN`, 50, false, false)
+end, false)
+    </pre>
+    <button class="copy-btn" onclick="copyCode('vmenu-code')">Copy</button>
+  </section>
+</main>
+
+<script>
+  function copyCode(id) {
+    const code = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      alert("Codice copiato negli appunti!");
+    }).catch(err => {
+      alert("Errore nella copia: " + err);
+    });
+  }
+</script>
+</body>
+</html>
